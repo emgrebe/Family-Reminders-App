@@ -3,9 +3,16 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "dotenv": "^8.1.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.7.3",
+    "morgan": "^1.9.1",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
-    "react-scripts": "3.2.0"
+    "react-router-dom": "^5.1.2",
+    "react-scripts": "3.2.0",
+    "request": "^2.88.0",
+    "serve-favicon": "^2.5.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -27,5 +34,19 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
+  "main": "server.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/emgrebe/Family-Reminders-App.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/emgrebe/Family-Reminders-App/issues"
+  },
+  "homepage": "https://github.com/emgrebe/Family-Reminders-App#readme",
+  "keywords": []
 }
