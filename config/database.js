@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 mongoose.connect('mongodb://localhost/reminders',
-  {useNewUrlParser: true, useCreateIndex: true}
+  {useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true }
 );
 
 var db = mongoose.connection;
