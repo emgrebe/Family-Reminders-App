@@ -1,5 +1,5 @@
 import React from 'react';
-import {Route, Switch, Redirect} from 'react-router-dom';
+import {Route, Switch} from 'react-router-dom';
 import './App.css';
 import NavBar from '../../components/NavBar/NavBar';
 import SignupPage from '../SignupPage/SignupPage';
@@ -8,32 +8,31 @@ import userService from '../utils/userService';
 
 class App extends React.Component {
   state = {
-    user: userService.getUser(),
     reminders: '',
-    answer: ''
+    answer: '',
+    user: userService.getUser()
   }
 
   handleLogout = () => {
-    userService.logOut()
+    userService.logOut();
     this.setState({
       user : null
-    })
+    });
   }
 
   handleSignupOrLogin = () => {
     this.setState({
       user : userService.getUser()
-    })
-  }
-
-  async componentDidMount() {
-    console.log("App did mount")
+    });
   }
   
   render() {
     return(
-      <div>
-        <NavBar />
+      <div className="App">
+        <NavBar
+          user={this.state.user}
+          handleLogout={this.handleLogout}
+        />
         <Switch>
           <Route exact path='/signup' render={({history}) =>
             <SignupPage
@@ -41,14 +40,12 @@ class App extends React.Component {
               handleSignupOrLogin={this.handleSignupOrLogin}
             />
           }/>
-          <Route exact path='/login' render={() =>
+          <Route exact path='/login' render={({history}) =>
             <LoginPage
-              // history={history}
+              history={history}
               handleSignupOrLogin={this.handleSignupOrLogin}
             />
           }/>
-          :
-          <Redirect to='/login'/>
         </Switch>
       </div>
     );
