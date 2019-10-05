@@ -1,20 +1,31 @@
 const express = require('express')
 const favicon = require('serve-favicon')
 const path = require('path')
+const cookieParser = require('cookie-parser');
+const cors = require('cors');
 const logger = require('morgan')
-
-require('./config/database');
-require('dotenv').config()
 
 const app = express()
 
+require('dotenv').config()
+require('./config/database');
+
+app.use(cors())
 app.use(logger('dev'))
 app.use(express.json())
+app.use(cookieParser())
+app.use(express.urlencoded({extended: false}))
 app.use(favicon(path.join(__dirname, 'build', 'favicon.ico'))) // to serve favicon icon
 app.use(express.static(path.join(__dirname, 'build'))) // to serve static files
 
+app.use('/api/users', require('./routes/users'))
+
+app.get('/*', function(req, res) {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
+
 const port = process.env.PORT || 3001;
 
-app.listen(port, ()=>{
-  console.log(`we are connected on port: ${port}`)
+app.listen(port, () => {
+  console.log(`We are connected on port: ${port}`)
 })

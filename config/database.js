@@ -1,11 +1,11 @@
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/reminders',
-  {useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true }
+mongoose.connect(process.env.DATABASE_URL,
+  {useNewUrlParser: true}
 );
 
-var db = mongoose.connection;
+const db = mongoose.connection;
 
-db.on('connected', function() {
-  console.log(`Connected to MongoDB at ${db.host}:${db.port}`);
+db.once('connected', () => {
+  console.log(`Connected to MongoDB ${db.name} at ${db.host}:${db.port}`);
 });

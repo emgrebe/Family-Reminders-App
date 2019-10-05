@@ -1,13 +1,29 @@
 import React from 'react';
-import {Route, Switch} from 'react-router-dom';
+import {Route, Switch, Redirect} from 'react-router-dom';
 import './App.css';
 import NavBar from '../../components/NavBar/NavBar';
 import SignupPage from '../SignupPage/SignupPage';
 import LoginPage from '../LoginPage/LoginPage';
+import userService from '../utils/userService';
 
 class App extends React.Component {
   state = {
-    reminders: ''
+    user: userService.getUser(),
+    reminders: '',
+    answer: ''
+  }
+
+  handleLogout = () => {
+    userService.logOut()
+    this.setState({
+      user : null
+    })
+  }
+
+  handleSignupOrLogin = () => {
+    this.setState({
+      user : userService.getUser()
+    })
   }
 
   async componentDidMount() {
@@ -22,11 +38,17 @@ class App extends React.Component {
           <Route exact path='/signup' render={({history}) =>
             <SignupPage
               history={history}
+              handleSignupOrLogin={this.handleSignupOrLogin}
             />
           }/>
           <Route exact path='/login' render={() =>
-            <LoginPage />
+            <LoginPage
+              // history={history}
+              handleSignupOrLogin={this.handleSignupOrLogin}
+            />
           }/>
+          :
+          <Redirect to='/login'/>
         </Switch>
       </div>
     );

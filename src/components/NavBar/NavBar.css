@@ -17,6 +17,6 @@
   color: pink;
 }
 
-.NavBar-login, .NavBar-link {
+.NavBar-login, .NavBar-link, .NavBar-welcome {
   color: palevioletred;
 }
