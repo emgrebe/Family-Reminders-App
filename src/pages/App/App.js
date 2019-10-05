@@ -9,10 +9,14 @@ class App extends React.Component {
   state = {
     reminders: ''
   }
+
+  async componentDidMount() {
+    console.log("App did mount")
+  }
+  
   render() {
     return(
       <div>
-        <header>Family Reminders</header>
         <NavBar />
         <Switch>
           <Route exact path='/signup' render={({history}) =>

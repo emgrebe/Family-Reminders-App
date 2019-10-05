@@ -1,0 +1,43 @@
+.SignupPage {
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+.header-footer {
+  display: flex;
+  justify-content: center;
+  font-weight: 500;
+  font-size: 4vmin;
+}
+
+input {
+  background: lightgray;
+  border-radius: 5px;
+  font-size: 4vmin;
+}
+
+button {
+  background: darkgray;
+  border-radius: 5px;
+  text-decoration: underline;
+  font-weight: 700;
+}
+
+a {
+  font-weight: 500;
+  font-size: 4vmin;
+}
+
+.text-center {
+  display: flex;
+  justify-content: space-between;
+}
+
+.header-footer, a, button {
+  color: palevioletred;
+}
+
+button, a{
+  font-size: 3vmin;
+}

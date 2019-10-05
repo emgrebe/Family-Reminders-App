@@ -1,9 +1,22 @@
+
 .NavBar {
   display: flex;
-  justify-content: center;
-  margin: 0 0 20px;
+  justify-content: space-between;
+  padding: 10px;
 }
 
 .NavBar-link {
+  font-size: 3vmin;
   margin: 0 10px;
+}
+
+.NavBar-title {
+  font-size: 5vmin;
+  font-weight: 700;
+  font-size: 5vmin;
+  color: pink;
+}
+
+.NavBar-login, .NavBar-link {
+  color: palevioletred;
 }

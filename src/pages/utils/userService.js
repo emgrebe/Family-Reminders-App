@@ -1,3 +1,4 @@
+
 const BASE_URL = '/users/';
 
 function signup(user) {
@@ -15,5 +16,5 @@ function signup(user) {
 }
 
 export default {
-  signup
+  signup, 
 };

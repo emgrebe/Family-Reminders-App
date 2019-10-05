@@ -1,3 +1,9 @@
+html {
+  height: 100%;
+  background: #aa4b6b; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to top, #aa4b6b, #6b6b83, #3b8d99); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to top, #aa4b6b, #6b6b83, #3b8d99);}
+  
 .App {
   text-align: center;
 }
