@@ -9,7 +9,6 @@ import userService from '../utils/userService';
 class App extends React.Component {
   state = {
     reminders: '',
-    answer: '',
     user: userService.getUser()
   }
 
@@ -28,11 +27,17 @@ class App extends React.Component {
   
   render() {
     return(
-      <div className="App">
+      <div className='App'>
         <NavBar
           user={this.state.user}
           handleLogout={this.handleLogout}
         />
+        <div className='App-options'>
+          <button className='c1 r1'>Send A Birthday Reminder</button>
+          <button className='c2 r1'>Send An Event Reminder</button>
+          <button className='c1 r2'>View Family Contact Info</button>
+          <button className='c2 r2'>View My Profile</button>
+        </div>
         <Switch>
           <Route exact path='/signup' render={({history}) =>
             <SignupPage

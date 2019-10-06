@@ -1,22 +1,57 @@
-
 .NavBar {
-  display: flex;
-  justify-content: space-between;
-  padding: 10px;
+  width: 100%;
 }
 
 .NavBar-link {
-  font-size: 3vmin;
-  margin: 0 10px;
+  font-size: 4vmin;
+  font-weight: 200;
 }
 
-.NavBar-title {
+.NavBar-title, .NavBar-links {
   font-size: 5vmin;
   font-weight: 700;
   font-size: 5vmin;
-  color: pink;
+  color: white;
 }
 
-.NavBar-login, .NavBar-link, .NavBar-welcome {
-  color: palevioletred;
+.NavBar-links {
+ margin-right: 15px;
+}
+
+.NavBar-loginLogout {
+  display: flex;
+  justify-content: space-between;
+  font-size: 4vmin;
+}
+
+.NavBar-welcome {
+  font-size: 6vmin;
+  text-decoration: none;
+  font-weight: 500;
+  padding-left: 10px;
+}
+
+.NavBar-logout {
+  font-size: 5vmin;
+  font-weight: 300;
+  padding-right: 15px;
+  
+}
+
+.NavBar-logout:hover, .NavBar-signup:hover {
+  color: #229780;
+  cursor: pointer;
+  text-shadow: 1px 1px 1px black;
+}
+
+.NavBar-link, .NavBar-welcome, .NavBar-logout {
+  color: white;
+}
+
+span {
+  font-size: 4vmin;
+}
+
+i {
+  padding: 0 10px;
 }

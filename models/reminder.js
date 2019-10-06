@@ -3,7 +3,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var reminderSchema = new Schema({
-  user: String,
+  name: String,
   reminder: String,
   answer: String
 });
