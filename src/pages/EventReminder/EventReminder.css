@@ -21,12 +21,7 @@
   height: 8vh;
 }
 
-.btn, .cancel {
-  font-size: 3vh;
-  margin-top: 3vh;
-}
-
-.cancel {
+.btn-default {
   font-size: 4vh;
-  margin-top: 2vh;
+  margin-top: 3vh;
 }

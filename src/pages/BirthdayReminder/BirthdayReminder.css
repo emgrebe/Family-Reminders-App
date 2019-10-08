@@ -21,6 +21,7 @@
   height: 8vh;
 }
 
-.btn {
-  height: 5vh;
+.btn-default {
+  font-size: 4vh;
+  margin-top: 3vh;
 }
