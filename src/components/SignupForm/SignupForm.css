@@ -45,3 +45,12 @@ button {
 button, a{
   font-size: 3vmin;
 }
+
+.login {
+  text-decoration: none;
+}
+
+.text-center {
+  display: flex;
+  flex-direction: column;
+}

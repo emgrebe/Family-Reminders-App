@@ -48,7 +48,9 @@ class App extends React.Component {
             />
           }/>
           <Route exact path='/' render={() =>
-            <WelcomePage />
+            <WelcomePage
+              user={this.state.user}
+            />
           }/>
           <Route exact path='/birthdays' render={() =>
             <BirthdayReminder />
