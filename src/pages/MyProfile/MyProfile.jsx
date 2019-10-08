@@ -13,7 +13,7 @@ class MyProfile extends React.Component {
             <span>Name: </span>
             <span>Phone: </span>
             <span>Email: </span>
-            <span>Bday: </span>
+            <span>Birthday: </span>
             <span>Current Reminders: </span>
             <Link to="/"><span className="return">RETURN</span></Link>
           </div>

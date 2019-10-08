@@ -52,6 +52,12 @@ class FamilyInfo extends React.Component {
             </div>
           </div>
         </form>
+        <section>
+        <p>{this.state.name}</p>
+        <p>{this.state.email}</p>
+        <p>{this.state.phone}</p>
+        <p>{this.state.birthday}</p>
+        </section>
       </div>
     )};
   } 

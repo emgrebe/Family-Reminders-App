@@ -17,6 +17,10 @@ class EventReminder extends Component {
     });
   }
 
+  handleText = () => {
+    fetch('/api/twilio')
+  }
+
   render() {
     return (
       <div className="EventReminder">
@@ -59,6 +63,14 @@ class EventReminder extends Component {
             </div>
           </div>
         </form>
+        <button onClick={this.handleText}>Text</button>
+        <section>
+          <p>{this.state.event}</p>
+          <p>{this.state.where}</p>
+          <p>{this.state.time}</p>
+          <p>{this.state.date}</p>
+          <p>{this.state.reminder}</p>
+        </section>
       </div>
     );
   }

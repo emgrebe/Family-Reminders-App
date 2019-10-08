@@ -5,10 +5,11 @@ const cookieParser = require('cookie-parser');
 const cors = require('cors');
 const logger = require('morgan')
 
-const app = express()
-
 require('dotenv').config()
 require('./config/database');
+
+const app = express()
+
 
 app.use(cors())
 app.use(logger('dev'))
@@ -19,6 +20,7 @@ app.use(favicon(path.join(__dirname, 'build', 'favicon.ico'))) // to serve favic
 app.use(express.static(path.join(__dirname, 'build'))) // to serve static files
 
 app.use('/api/users', require('./routes/users'))
+app.use('/api/twilio', require('./routes/twilio'))
 
 app.get('/*', function(req, res) {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));

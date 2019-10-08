@@ -4,15 +4,19 @@ import './BirthdayReminder.css';
 
 class BirthdayReminder extends Component {
   state = {
-    name: '',
-    date: '',
-    reminder: ''
+      name: '',
+      date: '',
+      reminder: ''
   };
 
   handleChange = (e) => {
     this.setState({
       [e.target.name] : e.target.value
     });
+  }
+
+  handleText = () => {
+    fetch('/api/twilio')
   }
 
   render() {
@@ -40,11 +44,17 @@ class BirthdayReminder extends Component {
           </div>
           <div className="form-group">
             <div className="col-sm-12 text-bottom">
-              <Link to='/myprofile' className="btn-default">Submit</Link>&nbsp;&nbsp;&nbsp;
+              <Link to='/myprofile' className="btn-default" onClick={this.handleShowReminders} >Submit</Link>&nbsp;&nbsp;&nbsp;
               <Link to='/' className='btn-default'>Cancel</Link>
             </div>
           </div>
         </form>
+        <button onClick={this.handleText}>Text</button>
+        <section>
+        <p>{this.state.name}</p>
+        <p>{this.state.date}</p>
+        <p>{this.state.reminder}</p>
+        </section>
       </div>
     );
   }
