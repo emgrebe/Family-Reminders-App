@@ -23,7 +23,7 @@ class BirthdayReminder extends Component {
           <div className="form-group">
             <div className="col-sm-12">
               <span>Name: </span>&nbsp;&nbsp;&nbsp;
-              <input type="name" className="form-control" placeholder="Name" value={this.state.name} name="name" onChange={this.handleChange} />
+              <input type="name" className="form-control" placeholder="Whose Birthday" value={this.state.name} name="name" onChange={this.handleChange} />
             </div>
           </div>
           <div className="form-group">
@@ -39,7 +39,7 @@ class BirthdayReminder extends Component {
             </div>
           </div>
           <div className="form-group">
-            <div className="col-sm-12 text-center">
+            <div className="col-sm-12 text-bottom">
               <Link to='/myprofile' className="btn-default">Submit</Link>&nbsp;&nbsp;&nbsp;
               <Link to='/' className='btn-default'>Cancel</Link>
             </div>
