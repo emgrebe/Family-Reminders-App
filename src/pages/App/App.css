@@ -1,50 +1,10 @@
 html {
   height: 100%;
   background: linear-gradient(to right, #43c6ac, #191654); 
-  padding: 20px;
+  padding: 10px;
 }
 
 .App {
   font-family: 'Kaushan Script', cursive;
   text-align: center;
-}
-
-.App-options {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
-  grid-gap: 20px;
-  min-height: 80vh;
-  justify-content: center;
-  align-items: center;
-  margin-top: 8vh;
-}
-
-.c1 {
-  grid-column: 1/2;
-}
-
-.c2 {
-  grid-column: 2/3;
-}
-
-.c1, .c2 {
-color: black;
-}
-
-.r1 {
-  grid-row: 1/2;
-}
-
-.r2 {
-  grid-row: 2/3;
-}
-
-button {
-  font-family: 'Kaushan Script', cursive;
-  height: 100%;
-}
-
-button:hover {
-color: #229780;
 }

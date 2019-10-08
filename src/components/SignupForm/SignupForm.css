@@ -34,8 +34,12 @@ a {
   justify-content: space-between;
 }
 
-.header-footer, a, button {
-  color: palevioletred;
+.header-footer, a {
+  color: white;
+}
+
+button {
+  color: black;
 }
 
 button, a{

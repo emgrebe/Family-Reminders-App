@@ -1,0 +1,44 @@
+.WelcomePage {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-gap: 20px;
+  min-height: 80vh;
+  justify-content: center;
+  align-items: center;
+  margin-top: 8vh;
+}
+
+.c1 {
+  grid-column: 1/2;
+}
+
+.c2 {
+  grid-column: 2/3;
+}
+
+.r1 {
+  grid-row: 1/2;
+}
+
+.r2 {
+  grid-row: 2/3;
+}
+
+.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 6vh;
+  color: black;
+}
+
+a.btn {
+  height: 100%;
+  width: 100%;
+  background: lightgray;
+
+}
+.btn:hover {
+  color: #229780;
+}

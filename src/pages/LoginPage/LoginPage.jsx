@@ -19,11 +19,8 @@ class LoginPage extends Component {
     e.preventDefault();
     try {
       await userService.login(this.state);
-      console.log('hi')
       this.props.handleSignupOrLogin();
-      console.log('please')
       this.props.history.push('/');
-      console.log('work')
     } catch (err) {
       alert('Invalid Credentials!');
     }
@@ -47,7 +44,7 @@ class LoginPage extends Component {
           <div className="form-group">
             <div className="col-sm-12 text-center">
               <button className="btn btn-default">Log In</button>&nbsp;&nbsp;&nbsp;
-              <Link to='/'>Cancel</Link>
+              <Link to='/' className='cancel'>Cancel</Link>
             </div>
           </div>
         </form>

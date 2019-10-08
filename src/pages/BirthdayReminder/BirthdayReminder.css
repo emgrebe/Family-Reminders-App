@@ -1,0 +1,26 @@
+.BirthdayReminder {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  margin: 10%;
+}
+
+.header-footer {
+  font-size: 7vh;
+  margin-bottom: 9vh;
+}
+
+.col-sm-12 {
+  font-size: 9vh;
+  color: white;
+}
+
+.form-control {
+  margin: auto;
+  height: 8vh;
+}
+
+.btn {
+  height: 5vh;
+}

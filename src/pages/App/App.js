@@ -5,10 +5,18 @@ import NavBar from '../../components/NavBar/NavBar';
 import SignupPage from '../SignupPage/SignupPage';
 import LoginPage from '../LoginPage/LoginPage';
 import userService from '../utils/userService';
+import WelcomePage from '../WelcomePage/WelcomePage';
+import BirthdayReminder from '../BirthdayReminder/BirthdayReminder';
+import EventReminder from '../EventReminder/EventReminder';
+import FamilyInfo from '../FamilyInfo/FamilyInfo';
+import MyProfile from '../MyProfile/MyProfile';
 
 class App extends React.Component {
   state = {
-    reminders: '',
+    name: '',
+    email: '',
+    phone: '',
+    birthday: Date,
     user: userService.getUser()
   }
 
@@ -31,13 +39,7 @@ class App extends React.Component {
         <NavBar
           user={this.state.user}
           handleLogout={this.handleLogout}
-        />
-        <div className='App-options'>
-          <button className='c1 r1'>Send A Birthday Reminder</button>
-          <button className='c2 r1'>Send An Event Reminder</button>
-          <button className='c1 r2'>View Family Contact Info</button>
-          <button className='c2 r2'>View My Profile</button>
-        </div>
+        />        
         <Switch>
           <Route exact path='/signup' render={({history}) =>
             <SignupPage
@@ -45,6 +47,20 @@ class App extends React.Component {
               handleSignupOrLogin={this.handleSignupOrLogin}
             />
           }/>
+          <Route exact path='/' render={() =>
+            <WelcomePage />
+          }/>
+          <Route exact path='/birthdays' render={() =>
+            <BirthdayReminder />
+          }/>
+          <Route exact path='/events' render={() =>
+            <EventReminder />
+          }/>
+          <Route exact path='/familyinfo' render={() =>
+            <FamilyInfo />          }/>
+          <Route exact path='/myprofile' render={() =>
+            <MyProfile />
+           }/>
           <Route exact path='/login' render={({history}) =>
             <LoginPage
               history={history}

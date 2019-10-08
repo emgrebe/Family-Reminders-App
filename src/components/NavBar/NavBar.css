@@ -44,6 +44,12 @@
   text-shadow: 1px 1px 1px black;
 }
 
+.NavBar-login:hover {
+  color: #1e1a6e;
+  cursor: pointer;
+  text-shadow: 1px 1px 1px black;
+}
+
 .NavBar-link, .NavBar-welcome, .NavBar-logout {
   color: white;
 }

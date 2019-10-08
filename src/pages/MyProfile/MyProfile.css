@@ -1,0 +1,4 @@
+.MyProfile-card {
+  display: flex;
+  flex-direction: column;
+}

@@ -7,6 +7,8 @@ class SignupForm extends Component {
   state = {
     name: '',
     email: '',
+    phone: '',
+    birthday: '',
     password: '',
     passwordConf: ''
   };
@@ -30,7 +32,7 @@ class SignupForm extends Component {
   }
 
   isFormInvalid() {
-    return !(this.state.name && this.state.email && this.state.password === this.state.passwordConf);
+    return !(this.state.name && this.state.email && this.state.phone && this.state.password === this.state.passwordConf);
   }
 
   render() {
@@ -46,6 +48,15 @@ class SignupForm extends Component {
           <div className="form-group">
             <div className="col-sm-12">
               <input type="email" className="form-control" placeholder="Email" value={this.state.email} name="email" onChange={this.handleChange} />
+            </div>
+          <div className="form-group">
+            <div className="col-sm-12">
+              <input type="phone" className="form-control" placeholder="Phone" value={this.state.phone} name="phone" onChange={this.handleChange} />
+            </div>
+          </div>
+          <div className="form-group">
+            <div className="col-sm-12">
+              <input type="date" className="form-control" placeholder="Birthday" value={this.state.birthday} name="birthday" onChange={this.handleChange} />
             </div>
           </div>
           <div className="form-group">
@@ -63,6 +74,7 @@ class SignupForm extends Component {
               <button className="btn btn-default" disabled={this.isFormInvalid()}>Sign Up</button>&nbsp;&nbsp;
               <Link to='/'>Cancel</Link>
             </div>
+          </div>
           </div>
         </form>
       </div>

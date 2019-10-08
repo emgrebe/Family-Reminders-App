@@ -11,12 +11,12 @@ const NavBar = (props) => {
   :
   <div className="NavBar-login">
     <div className="NavBar-title">
-      Family Reminders
+      Family Reminders<i className="fas fa-sms"></i>
     </div>
     <div className='NavBar-links'>
-    <Link to='/login' className='NavBar-link NavBar-login'><i className="fas fa-user-circle"></i>LOG IN</Link>
+    <Link to='/login' className='NavBar-link NavBar-login'>LOG IN</Link>
      &nbsp;&nbsp; &nbsp;&nbsp;
-    <Link to='/signup' className='NavBar-link NavBar-signup'><i className="fas fa-users"></i>SIGN UP</Link>
+    <Link to='/signup' className='NavBar-link NavBar-signup'>SIGN UP</Link>
     </div>
   </div>;
   return (
