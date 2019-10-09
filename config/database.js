@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 console.log(process.env.REACT_APP_DATABASE_URL)
-mongoose.connect(process.env.REACT_APP_DATABASE_URL,
+mongoose.connect(`${process.env.REACT_APP_DATABASE_URL}`,
   {
     useNewUrlParser: true,
     useUnifiedTopology: true
