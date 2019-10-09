@@ -1,10 +1,11 @@
 const mongoose = require('mongoose');
 
-console.log(process.env.DATABASE_URL)
-mongoose.connect(`${process.env.DATABASE_URL || process.env.REACT_APP_DATABASE_URL}`,
+mongoose.connect(
+  'mongodb://localhost:3000/',
   {
     useNewUrlParser: true,
-    useUnifiedTopology: true
+    useUnifiedTopology: true,
+    useFindAndModify: false
   }
 );
 
