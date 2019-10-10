@@ -47,7 +47,7 @@ class FamilyInfo extends React.Component {
           </div>
           <div className="form-group">
             <div className="col-sm-12 text-bottom">
-              <Link to='/myprofile' className="btn-default">Submit</Link>&nbsp;&nbsp;&nbsp;
+              <Link to='/' className="btn-default">Submit</Link>&nbsp;&nbsp;&nbsp;
               <Link to='/' className='btn-default'>Cancel</Link>
             </div>
           </div>

@@ -17,16 +17,11 @@ class MyProfile extends React.Component {
         <form className="form-horizontal">
           <label>Current Reminders: </label>
           <div className=''>
-          <ReminderCard
-            />
+          <ReminderCard />
           </div>
-          <div>
-            <button>EDIT</button>
-            <button>DELETE</button>
             <Link to="/">
               <label className="return">RETURN</label>
             </Link>
-          </div>
         </form>
       </div>
     )};
