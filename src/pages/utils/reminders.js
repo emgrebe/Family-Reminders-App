@@ -5,10 +5,24 @@ export function getAll() {
   .then(res => res.json());
 }
 
-export function creae(reminder) {
+export function create(msg) {
   return fetch(BASE_URL, {
     method: 'POST',
     headers: {'content-type': 'application/json'},
-    body: JSON.stringify(reminder)
+    body: JSON.stringify(msg)
+  }).then(res => res.json());
+}
+
+export function update(msg) {
+  return fetch(`${BASE_URL}/${msg._id}`, {
+    method: 'PUT',
+    headers: {'content-type': 'application/json'},
+    body: JSON.stringify(msg)
+  }).then(res => res.json());
+}
+
+export function deleteOne(id) {
+  return fetch(`${BASE_URL}/${id}`, {
+    method: 'DELETE'
   }).then(res => res.json());
 }

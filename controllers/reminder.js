@@ -7,16 +7,28 @@ module.exports = {
 };
 
 async function index(req, res) {
-  const reminders = await Reminder.find({});
-  res.status(200).json(reminders);
+  try {
+    const reminders = await Reminder.find({});
+    await res.status(200).json(reminders);
+  } catch(error) {
+    throw Error(error)
+  }
 }
 
 async function show(req, res) {
-  const reminder = await Reminder.findById(req.params.id);
-  res.status(200).json(reminder);
+  try {
+    const reminder = await Reminder.findById(req.params.id);
+    await res.status(200).json(reminder);
+  } catch(error) {
+    throw Error(error)
+  }
 }
 
 async function create(req, res) {
-  const reminder = await Reminder.create(req.body);
-  res.status(200).json(reminder);
+  try {
+    const reminder = await Reminder.create(req.body);
+    await res.status(200).json(reminder);
+  } catch(error) {
+    throw Error(error)
+  }
 }

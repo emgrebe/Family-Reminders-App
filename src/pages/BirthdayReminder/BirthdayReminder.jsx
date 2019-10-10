@@ -4,16 +4,28 @@ import './BirthdayReminder.css';
 
 class BirthdayReminder extends Component {
   state = {
-      name: '',
-      date: '',
-      reminder: ''
+      invalidForm: true,
+      formData: {
+        name: '',
+        date: '',
+        reminder: ''
+      }
+  };
+
+  formRef = React.createRef();
+
+  handleSubmit = e => {
+    e.preventDefault();
+    this.props.handleAddReminder(this.state.formData.reminder)
   };
 
   handleChange = (e) => {
+    const formData = {...this.state.formData, [e.target.name]: e.target.value};
     this.setState({
-      [e.target.name] : e.target.value
+      formData,
+      invalidForm: !this.formRef.current.checkValidity()
     });
-  }
+  };
 
   handleText = () => {
     fetch('/api/twilio')
@@ -23,38 +35,72 @@ class BirthdayReminder extends Component {
     return (
       <div className="BirthdayReminder">
         <header className="header-footer"><i className="fas fa-gifts"></i>Birthday Reminder</header>
-        <form className="form-horizontal">
+        <form ref={this.formRef} onSubmit={this.handleSubmit} className="form-horizontal">
           <div className="form-group">
             <div className="col-sm-12">
-              <span>Name: </span>&nbsp;&nbsp;&nbsp;
-              <input type="name" className="form-control" placeholder="Whose Birthday" value={this.state.name} name="name" onChange={this.handleChange} />
+              <label>Name: </label>&nbsp;&nbsp;&nbsp;
+              <input 
+                className="form-control" 
+                placeholder="Whose Birthday" 
+                name="name" 
+                value={this.state.formData.name} 
+                onChange={this.handleChange}
+                required
+             />
             </div>
           </div>
           <div className="form-group">
             <div className="col-sm-12">
-              <span>Date: </span>&nbsp;&nbsp;&nbsp;
-              <input type="date" className="form-control" placeholder="Date" value={this.state.date} name="date" onChange={this.handleChange} />
+              <label>Date: </label>&nbsp;&nbsp;&nbsp;
+              <input 
+              className="form-control" 
+              type="date" 
+              placeholder="Date" 
+              name="date" 
+              value={this.state.formData.date} 
+              onChange={this.handleChange} 
+              required
+              />
             </div>
           </div>
           <div className="form-group">
             <div className="col-sm-12">
-              <span>Reminder: </span>&nbsp;&nbsp;&nbsp;
-              <input type="reminder" className="form-control" placeholder="Reminder Message..." value={this.state.reminder} name="reminder" onChange={this.handleChange} />
+              <label>Reminder: </label>&nbsp;&nbsp;&nbsp;
+              <input 
+                className="form-control" 
+                placeholder="Reminder Message..." 
+                name="reminder" 
+                value={this.state.formData.reminder} 
+                onChange={this.handleChange}
+                required
+              />
             </div>
           </div>
           <div className="form-group">
             <div className="col-sm-12 text-bottom">
-              <Link to='/myprofile' className="btn-default" onClick={this.handleShowReminders} >Submit</Link>&nbsp;&nbsp;&nbsp;
-              <Link to='/' className='btn-default'>Cancel</Link>
+              <Link to='/myprofile' onClick={this.handleShowReminders}>
+                <button
+                  type='submit'
+                  className='btn-default'
+                  disabled={this.state.invalidForm}
+                >
+                  SUBMIT
+                </button>
+              </Link>&nbsp;&nbsp;&nbsp;
+              <Link to='/'>
+                <button className='btn-default'>
+                  CANCEL
+                </button>
+              </Link>
             </div>
           </div>
         </form>
         <button onClick={this.handleText}>Text</button>
-        <section>
+        {/* <section>
         <p>{this.state.name}</p>
         <p>{this.state.date}</p>
         <p>{this.state.reminder}</p>
-        </section>
+        </section> */}
       </div>
     );
   }

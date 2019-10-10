@@ -1,21 +1,31 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import './MyProfile.css';
+import ReminderCard from '../../components/ReminderCard/ReminderCard';
 
 class MyProfile extends React.Component {
-  
   render() {
     return (
       <div className="MyProfile">
         <header className="header-footer"><i className="fas fa-id-badge"></i>My Profile</header>
-        <form className="form-horizontal">
           <div className="MyProfile-card">
-            <span>Name: </span>
-            <span>Phone: </span>
-            <span>Email: </span>
-            <span>Birthday: </span>
-            <span>Current Reminders: </span>
-            <Link to="/"><span className="return">RETURN</span></Link>
+            <label>Name: </label>
+            <label>Phone: </label>
+            <label>Email: </label>
+            <label>Birthday: </label>
+          </div>
+        <form className="form-horizontal">
+          <label>Current Reminders: </label>
+          <div className=''>
+          <ReminderCard
+            />
+          </div>
+          <div>
+            <button>EDIT</button>
+            <button>DELETE</button>
+            <Link to="/">
+              <label className="return">RETURN</label>
+            </Link>
           </div>
         </form>
       </div>
