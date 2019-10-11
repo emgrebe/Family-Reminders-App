@@ -9,8 +9,7 @@ function ReminderCard({reminder, handleDeleteReminder}) {
           <dt>Reminder Message</dt>
         </dl>
       </div>
-      <div clasName='panel-footer'>
-          <button>EDIT</button>
+      <div className='panel-footer'>
         <button>DELETE</button>
       </div>
     </div>

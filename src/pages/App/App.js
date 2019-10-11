@@ -21,7 +21,7 @@ class App extends React.Component {
       birthday: Date,
       reminders: [],
     },
-    user: userService.getUser()
+    user: [userService.getUser()]
   }
 
   handleLogout = () => {
@@ -114,6 +114,7 @@ class App extends React.Component {
 
           <Route exact path='/myprofile' render={(history, location) =>
             <MyProfile
+              user={this.state.user}
               handleUpdateReminder={this.handleUpdateReminder}
               location={location}
             />
