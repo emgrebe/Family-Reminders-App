@@ -5,7 +5,7 @@ const client = require('twilio')(accountSid, authToken);
 function sms(req, res){
   
 client.messages.create({
-     body: "Welcome to Family-Reminders",
+     body: req.body.msg,
      from: '+18706578060',
      to: '+15126952339'
    })

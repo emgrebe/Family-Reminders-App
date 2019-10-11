@@ -1,12 +1,13 @@
-const Reminder = require('../models/reminder');
+const User = require('../models/user');
 
 module.exports = {
-  index,
+  del,
+  getAll,
   show, 
-  create
+  create,
 };
 
-async function index(req, res) {
+async function getAll(req, res) {
   try {
     const reminders = await Reminder.find({});
     await res.status(200).json(reminders);
@@ -24,11 +25,33 @@ async function show(req, res) {
   }
 }
 
-async function create(req, res) {
-  try {
-    const reminder = await Reminder.create(req.body);
-    await res.status(200).json(reminder);
-  } catch(error) {
-    throw Error(error)
-  }
+function create(req, res){
+  console.log(req.user)
+  let reminder = req.body.msg.reminder
+  let date = req.body.msg.date
+  User.findById(req.user._id)
+  .then(s => {
+    let obj = {
+      reminder,
+      date
+    }
+    s.reminder.push(obj)
+    s.save(()=>
+    {
+      res.status(200).json(obj)
+    })
+  })
+}
+
+function del(req, res){
+  console.log(req.body)
+  const userId = req.body.user._id
+  User.findById(userId)
+  .then(person=>{
+    const reminder = user.reminder.id(reminderId)
+    user.reminder.remove(reminder)
+    user.save(()=>{
+      res.status(201).json(req.body.reminderIdx)
+    })
+  })
 }

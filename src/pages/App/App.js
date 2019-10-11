@@ -21,7 +21,7 @@ class App extends React.Component {
       birthday: Date,
       reminders: [],
     },
-    user: [userService.getUser()]
+    user: userService.getUser()
   }
 
   handleLogout = () => {
@@ -39,9 +39,9 @@ class App extends React.Component {
 
   handleAddReminder = async newReminderData => {
     const newReminder = await Reminders.create(newReminderData);
-    this.setState(state => ({
-      reminders: [...state.formData.reminders, newReminder]
-    }), () => this.props.history.push('/myprofile'));
+    this.setState({
+      reminders: newReminder
+    })
   }
 
   handleUpdateReminder = async updatedReminderData => {
@@ -96,8 +96,9 @@ class App extends React.Component {
             />
           }/>
 
-          <Route exact path='/birthdays' render={() =>
+          <Route exact path='/birthdays' render={({history}) =>
             <BirthdayReminder
+              history={history}
               handleAddReminder={this.handleAddReminder}
             />
           }/>
@@ -117,6 +118,7 @@ class App extends React.Component {
               user={this.state.user}
               handleUpdateReminder={this.handleUpdateReminder}
               location={location}
+              state={this.state}
             />
            }/>
 

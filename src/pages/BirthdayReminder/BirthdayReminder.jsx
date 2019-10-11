@@ -4,7 +4,6 @@ import './BirthdayReminder.css';
 
 class BirthdayReminder extends Component {
   state = {
-      invalidForm: true,
       formData: {
         name: '',
         date: '',
@@ -12,24 +11,30 @@ class BirthdayReminder extends Component {
       }
   };
 
-  formRef = React.createRef();
+  handleText = () => {
+    fetch('/api/twilio', {
+      method: "POST",
+      headers : {
+        "content-type" : "application/json"
+      },
+      body: JSON.stringify({msg:this.state.formData.reminder})
+    })
+  }
 
-  handleSubmit = e => {
+  handleSubmit = async (e) => {
     e.preventDefault();
-    this.props.handleAddReminder(this.state.formData.reminder)
+    await this.props.handleAddReminder(this.state.formData)
+    this.handleText()
+    this.props.history.push('/myprofile')
   };
 
   handleChange = (e) => {
     const formData = {...this.state.formData, [e.target.name]: e.target.value};
     this.setState({
-      formData,
-      invalidForm: !this.formRef.current.checkValidity()
+      formData
     });
   };
 
-  handleText = () => {
-    fetch('/api/twilio')
-  }
 
   render() {
     return (
@@ -78,15 +83,13 @@ class BirthdayReminder extends Component {
           </div>
           <div className="form-group">
             <div className="col-sm-12 text-bottom">
-              <Link to='/myprofile' onClick={this.handleShowReminders}>
                 <button
-                  type='submit'
                   className='btn-default'
-                  disabled={this.state.invalidForm}
+                  // disabled={this.state.invalidForm}
                 >
                   SUBMIT
                 </button>
-              </Link>&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;
               <Link to='/'>
                 <button className='btn-default'>
                   CANCEL
@@ -96,11 +99,6 @@ class BirthdayReminder extends Component {
           </div>
         </form>
         <button onClick={this.handleText}>Text</button>
-        {/* <section>
-        <p>{this.state.name}</p>
-        <p>{this.state.date}</p>
-        <p>{this.state.reminder}</p>
-        </section> */}
       </div>
     );
   }

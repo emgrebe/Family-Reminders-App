@@ -3,7 +3,7 @@ const bcrypt = require('bcrypt');
 
 const SALT_ROUNDS = 6;
 
-var reminderSchema = new Schema({
+var reminderSchema =  mongoose.Schema({
   date: Date,
   reminder: String
 });

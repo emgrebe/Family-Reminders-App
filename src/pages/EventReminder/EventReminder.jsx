@@ -19,6 +19,7 @@ class EventReminder extends Component {
   handleSubmit = e => {
     e.preventDefault();
     this.props.handleAddReminder(this.state.formData.reminder)
+    console.log(this.handleSubmit)
   };
 
   handleChange = (e) => {
@@ -112,6 +113,7 @@ class EventReminder extends Component {
                   type='submit'
                   className='btn-default'
                   disabled={this.state.invalidForm}
+                  
                 >
                   SUBMIT
                 </button>

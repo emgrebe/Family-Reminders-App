@@ -2,6 +2,6 @@ const express = require('express');
 const router = express.Router();
 const twilioCtrl = require('../controllers/twilio');
 
-router.get('/', twilioCtrl.sms)
+router.post('/', twilioCtrl.sms)
 
 module.exports = router;

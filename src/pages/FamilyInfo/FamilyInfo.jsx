@@ -17,6 +17,7 @@ class FamilyInfo extends React.Component {
   }
 
   render() {
+    // const family = this.props.family.map(family, idx)
     return (
       <div className="FamilyInfo">
         <header className="header-footer"><i className="fas fa-users"></i>Family Info</header>

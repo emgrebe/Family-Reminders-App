@@ -1,17 +1,19 @@
 import React from 'react';
 
-function ReminderCard({reminder, date}) {
+function FamilyCard({reminder, date}) {
   return (
     <div className='panel panel-default'>
       <div className='panel panel-body'>
         <dl>
-          <dt>Date{date}</dt>
-          <dt>Reminder Message { reminder }</dt>
+          <dt>Name{name}</dt>
+          <dt>Email {email}</dt>
+          <dt>Phone Number {phone}</dt>
+          <dt>Birthday {birthday}</dt>
         </dl>
       </div>
-      {/* <div className='panel-footer'>
+      <div className='panel-footer'>
         <button>DELETE</button>
-      </div> */}
+      </div>
     </div>
   );
 }

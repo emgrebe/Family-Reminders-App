@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
   mongoose.Promise = global.Promise;
   mongoose.connect(
     MONGO_URL,
-    {useNewUrlParser: true}).then(
+    {useNewUrlParser: true, useUnifiedTopology: true}).then(
       () => { console.log('Database is connected') },
       err => { console.log('Cannot connect to the databaqse' + err) }
     );
