@@ -4,7 +4,6 @@ import './EventReminder.css';
 
 class EventReminder extends Component {
   state = {
-    invalidForm: true,
     formData: {
       event: '',
       where: '',
@@ -14,7 +13,6 @@ class EventReminder extends Component {
     }
   };
 
-  formRef = React.createRef();
 
   handleSubmit = e => {
     e.preventDefault();
@@ -25,8 +23,7 @@ class EventReminder extends Component {
   handleChange = (e) => {
     const formData = {...this.state.formData, [e.target.name] : e.target.value};
     this.setState({
-      formData,
-      invalidForm: !this.formRef.current.checkValidity()
+      formData
     });
   };
 
@@ -112,8 +109,7 @@ class EventReminder extends Component {
                 <button
                   type='submit'
                   className='btn-default'
-                  disabled={this.state.invalidForm}
-                  
+                  disabled={this.state.invalidForm}                 
                 >
                   SUBMIT
                 </button>
@@ -126,14 +122,6 @@ class EventReminder extends Component {
             </div>
           </div>
         </form>
-        <button onClick={this.handleText}>Text</button>
-        {/* <section>
-          <p>{this.state.event}</p>
-          <p>{this.state.where}</p>
-          <p>{this.state.time}</p>
-          <p>{this.state.date}</p>
-          <p>{this.state.reminder}</p>
-        </section> */}
       </div>
     );
   }

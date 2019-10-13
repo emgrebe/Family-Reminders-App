@@ -85,7 +85,6 @@ class BirthdayReminder extends Component {
             <div className="col-sm-12 text-bottom">
                 <button
                   className='btn-default'
-                  // disabled={this.state.invalidForm}
                 >
                   SUBMIT
                 </button>
@@ -98,7 +97,6 @@ class BirthdayReminder extends Component {
             </div>
           </div>
         </form>
-        <button onClick={this.handleText}>Text</button>
       </div>
     );
   }

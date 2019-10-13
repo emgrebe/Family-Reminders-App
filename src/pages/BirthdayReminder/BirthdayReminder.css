@@ -6,6 +6,10 @@
   margin: 10%;
 }
 
+label {
+  font-size: 5vh;
+}
+
 .header-footer {
   font-size: 7vh;
   margin-bottom: 9vh;
@@ -18,10 +22,11 @@
 
 .form-control {
   margin: auto;
-  height: 8vh;
+  height: 2vh;
 }
 
-.btn-default {
-  font-size: 4vh;
+button {
+  font-size: 3vh;
   margin-top: 3vh;
+  height: 3vh;
 }

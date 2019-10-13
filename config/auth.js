@@ -3,7 +3,6 @@ const SECRET = process.env.REACT_APP_SECRET
 
 module.exports = function(req, res, next) {
     // Check for the token being sent in three different ways
-    console.log('ahhhh i shit myself')
     let token = req.get('Authorization') || req.query.token || req.body.token;
     if (token) {
       console.log(token)

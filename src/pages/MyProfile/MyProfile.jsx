@@ -1,21 +1,10 @@
 import React from 'react';
 import './MyProfile.css';
-import ReminderCard from '../../components/ReminderCard/ReminderCard';
 import ProfilePost from '../../components/Profile'
 
 class MyProfile extends React.Component {
   render() {
     
-    // this.props.user.map((user, idx, reminder)=> {
-    //   return (
-    //     <ReminderCard 
-    //     {...reminder}
-    //     // user=this.props.user}
-    //     key={idx}
-    //     />
-    //   )
-    // })
-
     const profile = this.props.user ? 
     // this.props.user.map((user, idx) => {
     //   return (
