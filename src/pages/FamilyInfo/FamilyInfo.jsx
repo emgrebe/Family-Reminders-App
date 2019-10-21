@@ -1,67 +1,74 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
-import './FamilyInfo.css'
-;
+import {Route, NavLink} from 'react-router-dom';
+import './FamilyInfo.css';
+import * as FamilyMember from '../utils/familyMember';
+import FamilyListPage from '../FamilyListPage/FamilyListPage';
+import AddFamilyPage from '../AddFamilyPage/AddFamilyPage';
+import EditFamilyPage from '../EditFamilyPage/EditFamilyPage';
+
 class FamilyInfo extends React.Component {
   state = {
-    name: '',
-    email: '',
-    phone: '',
-    birthday: Date
+    people: []
   };
 
-  handleChange = (e) => {
-    this.setState({
-      [e.target.name] : e.target.value
-    });
+  handleAddPerson = async newPersonData => {
+    const newPerson = await FamilyMember.create(newPersonData);
+    this.setState(state => ({
+      people: [...state.people, newPerson]
+    }), () => this.props.history.push('/familyInfo'));
   }
 
+  handleUpdatePerson = async updatedPersonData => {
+    const updatedPerson = await FamilyMember.update(updatedPersonData);
+    const newPeopleArray = this.state.people.map(p => 
+      p._id === updatedPerson._id ? updatedPerson : p
+    );
+    this.setState(
+      {people: newPeopleArray},
+      // Using cb to wait for state to update before rerouting
+      () => this.props.history.push('/')
+    );
+  }
+
+  handleDeletePerson= async id => {
+    await FamilyMember.deleteOne(id);
+    this.setState(state => ({
+      people: state.people.filter(p => p._id !== id)
+    }), () => this.props.history.push('/'));
+  }
+
+
+
   render() {
-    // const family = this.props.family.map(family, idx)
     return (
-      <div className="FamilyInfo">
-        <header className="header-footer"><i className="fas fa-users"></i>Family Info</header>
-        <form className="form-horizontal">
-          <div className="form-group">
-            <div className="col-sm-12">
-              <span className="txt">Name: </span>&nbsp;&nbsp;&nbsp;
-              <input type="name" className="form-control" placeholder="Name" value={this.state.name} name="name" onChange={this.handleChange} />
-            </div>
-          </div>
-          <div className="form-group">
-            <div className="col-sm-12">
-              <span className="txt">Email: </span>&nbsp;&nbsp;&nbsp;
-              <input type="email" className="form-control" placeholder="Email" value={this.state.email} name="email" onChange={this.handleChange} />
-            </div>
-          </div>
-          <div className="form-group">
-            <div className="col-sm-12">
-              <span className="txt">Phone: </span>&nbsp;&nbsp;&nbsp;
-              <input type="phone" className="form-control" placeholder="Phone Number" value={this.state.phone} name="phone" onChange={this.handleChange} />
-            </div>
-          </div>
-          <div className="form-group">
-            <div className="col-sm-12">
-              <span className="txt">Birthday: </span>&nbsp;&nbsp;&nbsp;
-              <input type="date" className="form-control" placeholder="Birthday" value={this.state.birthday} name="birthday" onChange={this.handleChange} />
-            </div>
-          </div>
-          <div className="form-group">
-            <div className="col-sm-12 text-bottom">
-              <Link to='/' className="btn-default">Submit</Link>&nbsp;&nbsp;&nbsp;
-              <Link to='/' className='btn-default'>Cancel</Link>
-            </div>
-          </div>
-        </form>
-        <section>
-        <p>{this.state.name}</p>
-        <p>{this.state.email}</p>
-        <p>{this.state.phone}</p>
-        <p>{this.state.birthday}</p>
-        </section>
+      <div className="App">
+        <header className="App-header">
+          <nav>
+            <NavLink exact to='/add'>Add Family Member</NavLink>
+          </nav>
+        </header>
+        <main>
+          <Route exact path='/familyInfo' render={({history}) => 
+            <FamilyListPage
+              people={this.state.people}
+              handleDeletePerson={this.handleDeletePerson}
+            />
+          } />
+          <Route exact path='/add' render={() => 
+            <AddFamilyPage
+              handleAddPerson = {this.handleAddPerson}
+            />
+          } />
+          <Route exact path='/edit' render={({history, location}) => 
+            <EditFamilyPage
+              handleUpdatePerson={this.handleUpdatePerson}
+              location={location}
+            />
+          } />
+        </main>
       </div>
-    )};
-  } 
-
-
+    );
+  }
+}
+  
 export default FamilyInfo;
