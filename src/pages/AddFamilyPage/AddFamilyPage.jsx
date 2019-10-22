@@ -1,4 +1,6 @@
 import React, {Component} from 'react';
+import {NavLink} from 'react-router-dom';
+import './AddFamilyPage.css';
 
 class AddFamilyPage extends Component {
   state = {
@@ -28,11 +30,11 @@ class AddFamilyPage extends Component {
 
   render() {
     return (
-      <>
-        <h1>Add Family Member</h1>
-        <form ref={this.formRef} autoComplete="off" onSubmit={this.handleSubmit}>
-          <div className="form-group">
-            <label>Person's Name (required)</label>
+      <div className='AddFamilyPage'>
+        <header className="header-footer">Add Family Member</header>
+        <form ref={this.formRef} autoComplete="off" onSubmit={this.handleSubmit} className="form-horizontal">
+          <div className="col-sm-12">
+            <label>Name</label>
             <input
               className="form-control"
               name="name"
@@ -41,8 +43,8 @@ class AddFamilyPage extends Component {
               required
             />
           </div>
-          <div className="form-group">
-            <label>Person's Email (required)</label>
+          <div className="col-sm-12">
+            <label>Email</label>
             <input
               className="form-control"
               name="email"
@@ -51,8 +53,8 @@ class AddFamilyPage extends Component {
               required
             />
           </div>
-          <div className="form-group">
-            <label>Person's Phone</label>
+          <div className="col-sm-12">
+            <label>Phone</label>
             <input
               className="form-control"
               name="phone"
@@ -60,8 +62,8 @@ class AddFamilyPage extends Component {
               onChange={this.handleChange}
             />
           </div>
-          <div className="form-group">
-            <label>Person's Birthday</label>
+          <div className="col-sm-12">
+            <label>Birthday</label>
             <input
               className="form-control"
               name="birthday"
@@ -69,15 +71,12 @@ class AddFamilyPage extends Component {
               onChange={this.handleChange}
             />
           </div>
-          <button
-            type="submit"
-            className="btn"
-            disabled={this.state.invalidForm}
-          >
-            Add Family Member
-          </button>
+          <div className='nav-btn-default'>
+          <NavLink className='navLink' exact to='/familyInfo'>Add Family Member</NavLink>
+          <NavLink className='navLink' exact to='/familyInfo'>Back</NavLink>
+          </div>
         </form>
-      </>
+      </div>
     );
   }
 }

@@ -20,6 +20,7 @@ app.use(favicon(path.join(__dirname, 'build', 'favicon.ico'))); // to serve favi
 app.use(express.static(path.join(__dirname, 'build'))); // to serve static files
 
   app.use(require('./config/auth'));
+app.use('/api/familyMembers', require('./routes/familyMember'));
 app.use('/api/reminders', require('./routes/reminder'));
 app.use('/api/users', require('./routes/users'));
 app.use('/api/twilio', require('./routes/twilio'));

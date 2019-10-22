@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var personSchema = new Schema({
-  name: {type: String, required: true},
+  name: {type: String},
   email: {type: String},
   phone: {type: Number},
   birthday: {type: Date}

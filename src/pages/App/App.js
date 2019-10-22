@@ -9,8 +9,12 @@ import * as Reminders from '../utils/reminders';
 import WelcomePage from '../WelcomePage/WelcomePage';
 import BirthdayReminder from '../BirthdayReminder/BirthdayReminder';
 import EventReminder from '../EventReminder/EventReminder';
-import FamilyInfo from '../FamilyInfo/FamilyInfo';
 import MyProfile from '../MyProfile/MyProfile';
+import * as FamilyMember from '../utils/familyMember';
+import FamilyListPage from '../FamilyListPage/FamilyListPage';
+import AddFamilyPage from '../AddFamilyPage/AddFamilyPage';
+import EditFamilyPage from '../EditFamilyPage/EditFamilyPage';
+
 
 class App extends React.Component {
   state = {
@@ -21,6 +25,7 @@ class App extends React.Component {
       birthday: Date,
       reminders: [],
     },
+    people: [],
     user: userService.getUser()
   }
 
@@ -62,6 +67,31 @@ class App extends React.Component {
   //   }), () => this.props.history.push('/myprofile'));
   // }
 
+  handleAddPerson = async newPersonData => {
+    const newPerson = await FamilyMember.create(newPersonData);
+    this.setState(state => ({
+      people: [...state.people, newPerson]
+    }), () => this.props.history.push('/familyInfo'));
+  }
+
+  handleUpdatePerson = async updatedPersonData => {
+    const updatedPerson = await FamilyMember.update(updatedPersonData);
+    const newPeopleArray = this.state.people.map(p => 
+      p._id === updatedPerson._id ? updatedPerson : p
+    );
+    this.setState(
+      {people: newPeopleArray},
+      () => this.props.history.push('/')
+    );
+  }
+
+  handleDeletePerson= async id => {
+    await FamilyMember.deleteOne(id);
+    this.setState(state => ({
+      people: state.people.filter(p => p._id !== id)
+    }), () => this.props.history.push('/'));
+  }
+
   /*--- Lifecycle Methods ---*/
 
   async componentDidMount() {
@@ -82,6 +112,25 @@ class App extends React.Component {
           handleLogout={this.handleLogout}
         />        
         <Switch>
+        <Route exact path='/familyInfo' render={({history}) => 
+            <FamilyListPage
+              people={this.state.people}
+              handleDeletePerson={this.handleDeletePerson}
+            />
+          } />
+
+          <Route exact path='/add' render={() => 
+            <AddFamilyPage
+              handleAddPerson = {this.handleAddPerson}
+            />
+          } />
+
+          <Route exact path='/edit' render={({history, location}) => 
+            <EditFamilyPage
+              handleUpdatePerson={this.handleUpdatePerson}
+              location={location}
+            />
+          } />
 
           <Route exact path='/signup' render={({history}) =>
             <SignupPage
@@ -109,10 +158,10 @@ class App extends React.Component {
             />
           }/>
 
-          <Route exact path='/familyinfo' render={() =>
+          {/* <Route exact path='/familyinfo' render={() =>
             <FamilyInfo />          
-          }/>
-
+          }/> */}
+       
           <Route exact path='/myprofile' render={(history, location) =>
             <MyProfile
               user={this.state.user}

@@ -25,7 +25,6 @@ class FamilyInfo extends React.Component {
     );
     this.setState(
       {people: newPeopleArray},
-      // Using cb to wait for state to update before rerouting
       () => this.props.history.push('/')
     );
   }
@@ -54,17 +53,20 @@ class FamilyInfo extends React.Component {
               handleDeletePerson={this.handleDeletePerson}
             />
           } />
+
           <Route exact path='/add' render={() => 
             <AddFamilyPage
               handleAddPerson = {this.handleAddPerson}
             />
           } />
+
           <Route exact path='/edit' render={({history, location}) => 
             <EditFamilyPage
               handleUpdatePerson={this.handleUpdatePerson}
               location={location}
             />
           } />
+
         </main>
       </div>
     );

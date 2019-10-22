@@ -1,10 +1,11 @@
 import React from 'react';
+import {NavLink} from 'react-router-dom';
 import FamilyMemberCard from '../../components/FamilyMemberCard/FamilyMemberCard'
 
 function FamilyListPage(props) {
   return (
     <>
-      <h1>List of Family Members</h1>
+      <header className='header-footer'>List of Family Members</header>
       <div className='FamilyListPage-grid'>
         {props.people.map(person =>
           <FamilyMemberCard
@@ -13,6 +14,10 @@ function FamilyListPage(props) {
             handleDeletePerson={props.handleDeletePerson}
           />
         )}
+        <div className='nav-btn-default'>
+        <NavLink className='navLink' exact to='/add'>Add Family Member</NavLink>
+        <NavLink className = 'navLink' exact to='/'>Back</NavLink>
+        </div>
       </div>
     </>
   );
